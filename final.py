@@ -2,7 +2,7 @@ players = [('a', 1), ('b', 0), ('c', 1), ('d', 1),('e', 1),('f', 1)]
 
 def matchmaking(players=[], teams = 3, min_player = 1, max_player = None):
 
-    game = []
+
     even = []
     odd = []
     copy = []
@@ -19,40 +19,17 @@ def matchmaking(players=[], teams = 3, min_player = 1, max_player = None):
 
     for x in game:
         for y in players:
-            print y, 'y'
             player_index = players.index(y)
-            if player_index % 2 == 0 and len(x) != max_player:
-                x.append(y)
-                print x, 'x'
-            elif len(x) == max_player:
-                pass
-            
-    # for x in players:
-    #     # print game, 'game again'
-    #     if len(game) == max_player:
-    #         print game, 'game'
-    #     player_index = players.index(x)
-    #     if player_index % 2 == 0:
-    #         print x, 'even'
-    #         if len(even) == 0:
-    #             even.append(x)
-    #         elif len(even) == max_player:
-    #             game.append(even)
-    #             even = []
-    #             even.append(x)
-    #         else:
-    #             even.append(x)
-    #     elif player_index % 2 == 1:
-    #         if len(even) == 0:
-    #             even.append(x)
-    #         elif len(even) == max_player:
-    #             game.append(even)
-    #             even = []
-    #             even.append(x)
-    #         else:
-    #             even.append(x)
-    #
-    # print even, 'even'
-    # print game, ''
+
+            if player_index % 2 == 0:
+                if len(x) != max_player:
+                    x.append(y)
+                    players.pop(player_index)
+            elif player_index % 2 == 1:
+                if len(x) != max_player:
+                    x.append(y)
+
+
+    print game, 'game'
 
 matchmaking(players, 2, 1, 1)
